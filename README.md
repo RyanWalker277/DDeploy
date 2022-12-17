@@ -38,6 +38,15 @@ Port 8000 needs to be open to internet on your linux machine in order for you to
 - Reduces manual intervention 
 - Saves you from the hassle of creating a production environment
 
+## Contributing
+
+Contributions are always welcome!
+
+See `contributing.md` for ways to get started.
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
 ## Support++
 
 This project needs your shiny star ⭐.   
