@@ -29,7 +29,7 @@ Now simply execute the script by
 ./DDeploy.sh
 ```
 ## Pre-Requisites
-Port 8000 needs to be open to internet on your linux machine in order for you to be able to access your deployment server.The script currently dosen't support changing the port from anything other than the default 8000 port , but will aim to add this in a future releae!
+Port 8000 needs to be open to internet on your linux machine in order for you to be able to access your deployment server.The script currently dosen't support changing the port from anything other than the default 8000 port , but will aim to add this in a future release!
 
 
 ## Features
