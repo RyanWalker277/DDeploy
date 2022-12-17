@@ -1,5 +1,8 @@
 #! /bin/sh
 
+set -x
+set -e
+
 green=`tput setaf 2`
 
 # updating the packages
