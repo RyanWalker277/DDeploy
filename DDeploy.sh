@@ -4,35 +4,35 @@ green=`tput setaf 2`
 
 # updating the packages
 echo "${green}Updating packages....."
-sudo -u root apt update -y && sudo -u ubuntu  apt upgrade -y >/dev/null
+sudo -u root apt update -y &&   apt upgrade -y >/dev/null
 # installing python-dev , pip and nginx
 echo "${green}Installing necessary packages....."
 sudo -u root apt install -y python3-pip python3-dev nginx >/dev/null
 # installing virtualenv
 echo "${green}Installing virtualenv python package...."
-sudo -u ubuntu pip3 install virtualenv >/dev/null
+pip3 install virtualenv >/dev/null
 # creating virtualenv
 echo "${green}Creating virtualenv"
 virtualenv env >/dev/null
 # activating virtualenv
 echo "${green}Activating virtualenv....."
-sudo -u ubuntu source env/bin/activate #PROBLEM
+source env/bin/activate #PROBLEM
 # installing gunicorn
 echo "${green}Installing gunicorn....."
-sudo -u ubuntu pip install django gunicorn >/dev/null
+pip install django gunicorn >/dev/null
 # getting repo link
 echo "${green}Provide a link to your github repo"
 read repo 
 # cloning repo
 echo "${green}Cloning Github repo....."
-sudo -u ubuntu git clone $repo >/dev/null
+git clone $repo >/dev/null
 # getting project name
 echo "${green}What's the name of your Django Project? (Provide the name which you used while running the 'django-admin startproject' command"
 read name
 # moving into project directory
 cd $name 
 # installing project directory
-sudo -u ubuntu pip3 install -r requirements.txt >/dev/null
+pip3 install -r requirements.txt >/dev/null
 # internally opening the port
 echo "${green}Allowing traffic internally for port 8000....."
 sudo -u root ufw allow 8000 >/dev/null
@@ -86,7 +86,7 @@ if [ -d "$DIR" ]; then
       sudo -u root printf "server {\n\tserver_name $IP;\n\tclient_max_body_size 100M;\n\tlocation / {\n\t\tinclude proxy_params;\n\t\tproxy_pass http://unix:/home/ubuntu/app.sock;\n}\n}" | sudo tee /etc/nginx/sites-available/django.conf
     else
       echo "${green}Creating django.conf file in ${DIR}..."
-      sudo -u ubuntu printf "server {\n\tserver_name $IP;\n\tclient_max_body_size 100M;\n\tlocation / {\n\t\tinclude proxy_params;\n\t\tproxy_pass http://unix:/home/ubuntu/app.sock;\n}\n}" | sudo tee /etc/nginx/sites-available/django.conf
+      printf "server {\n\tserver_name $IP;\n\tclient_max_body_size 100M;\n\tlocation / {\n\t\tinclude proxy_params;\n\t\tproxy_pass http://unix:/home/ubuntu/app.sock;\n}\n}" | sudo tee /etc/nginx/sites-available/django.conf
   fi
 fi
   echo "${green}${DIR} not found"
@@ -97,7 +97,7 @@ fi
   echo "${green}Creating django.conf file in ${DIR}..."
   echo "${green}What is the Public IP of your instance?"
   read IP
-  sudo -u ubuntu  printf "server {\n\tserver_name $IP;\n\tclient_max_body_size 100M;\n\tlocation / {\n\t\tinclude proxy_params;\n\t\tproxy_pass http://unix:/home/ubuntu/app.sock;\n}\n}" | sudo tee /etc/nginx/sites-available/django.conf
+  printf "server {\n\tserver_name $IP;\n\tclient_max_body_size 100M;\n\tlocation / {\n\t\tinclude proxy_params;\n\t\tproxy_pass http://unix:/home/ubuntu/app.sock;\n}\n}" | sudo tee /etc/nginx/sites-available/django.conf
 echo "${green}Testing the conf file"
 sudo -u root nginx -t >/dev/null
 echo "${green}Creating symlink for the conf file"
@@ -108,5 +108,3 @@ echo "${green}Restarting Nginx"
 sudo -u root service nginx restart >/dev/null
 
 echo "${green}The task is done! Your project is up and running. Just visit $IP to view your deployment"
-
-# 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
