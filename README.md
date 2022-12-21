@@ -19,17 +19,12 @@ Change the directory
 ```bash
 cd DDeploy
 ```
-Make the script executabel by running
-```bash
-chmod u+x DDeploy.sh
-```
 Now simply execute the script by 
-
 ```bash
-source DDeploy.sh
+source DDeploy.sh --link "Link to your github repo" --name "Name of your github repo" --proj "Name of your django project" --IP "IP address of your vm instance"
 ```
 ## Pre-Requisites
-Port 8000 needs to be open to internet on your linux machine in order for you to be able to access your deployment server.The script currently dosen't support changing the port from anything other than the default 8000 port , but will aim to add this in a future release!
+Port 80 needs to be open to internet on your linux machine in order for you to be able to access your deployment server.
 
 
 ## Features
