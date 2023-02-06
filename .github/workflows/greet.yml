@@ -16,4 +16,4 @@ jobs:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
           is-oauth-token: true
           issue-message: 'Hello there, thanks for opening your first issue. We welcome you to the community!'
-          pr-message: 'Thank you for contributing to EcoJoy.Your PR will be reviewed soon.'
+          pr-message: 'Thank you for contributing to DDeploy.Your PR will be reviewed soon.'
